@@ -3,26 +3,84 @@
 Calculadora personal del quinto semestre de Medicina UDLA, período `202710`.
 Incluye ocho materias, 103 evaluaciones, tres progresos y 20.00 créditos.
 
+## Usar la calculadora en la web
+
+### [Abrir Calculadora UDLA](https://ivanpaguay13.github.io/calculadora-udla/)
+
+Abre el enlace desde el navegador de tu celular o computadora. Para usarla,
+solo necesitas un navegador compatible con WebAssembly; no tienes que instalar
+Rust, Node.js ni descargar el proyecto. Tampoco necesitas una cuenta.
+
+1. Selecciona una materia en el resumen del semestre.
+2. Introduce las calificaciones que ya tienes, de **0 a 10**. Deja vacías las
+   actividades pendientes; registra `0` solo cuando esa sea tu calificación real.
+3. Ajusta **Mi meta para esta materia** para ver qué necesitas obtener en las
+   actividades restantes.
+4. Revisa tus resultados por progreso, materia y semestre.
+5. En **Respaldos y ajustes**, usa **Exportar respaldo** para guardar una copia
+   de tus notas. Puedes recuperarla o trasladarla con **Importar respaldo**.
+
+**Tus notas se guardan en ese navegador y dispositivo.** No se sincronizan
+entre el celular y la computadora. Exporta un respaldo antes de borrar los
+datos del sitio o cambiar de equipo.
+
+Si tu docente cambia los porcentajes, usa **Ajustar ponderaciones** dentro de
+la materia para crear una configuración local.
+
+Puedes compartir el enlace web con tus compañeros: cada persona registra y
+conserva sus propias notas. Después de una primera carga completa, la
+calculadora puede funcionar sin conexión en navegadores compatibles. Si tu
+navegador ofrece instalarla o añadirla a la pantalla de inicio, también puedes
+abrirla desde allí.
+
+## Funciones
+
+- Resumen de semestre ponderado por créditos y detalle de cada materia.
+- Registro en escala 0–10 con hasta dos decimales, pendiente como `null`.
+- Aporte acumulado, promedio de lo evaluado, máximo alcanzable y nota definitiva.
+- Meta editable por materia y nota uniforme necesaria en las pendientes.
+- Guardado local por cada cambio válido; errores visibles si no puede guardarse.
+- Exportación e importación JSON con versión, fecha y validación completa.
+- Confirmación antes de reemplazar notas mediante una importación.
+- Ponderaciones personalizadas locales, siempre con 100 % por progreso.
+- Diseño adaptable, etiquetas accesibles, teclado y campos numéricos.
+- Caché sin conexión y manifiesto PWA. La instalación depende del navegador.
+
+La meta inicial `7.00` es personal y editable: no confirma el umbral institucional.
+Un resultado incompleto nunca se presenta como definitivo. El promedio de lo
+evaluado normaliza los pesos que tienen nota; el semestral incluye los créditos.
+El acumulado cuenta solo los puntos registrados y las pendientes aportan cero
+únicamente a ese indicador. El máximo supone 10 en todas las pendientes.
+
+## Datos y uso sin conexión
+
+Las notas pertenecen al navegador y al origen donde se abrió la aplicación.
+No se sincronizan entre dispositivos. Exporta un respaldo antes de borrar datos
+del sitio, usar navegación privada, cambiar de dominio o trasladarte de equipo.
+El respaldo guarda notas, `null`, metas, pesos locales y sus identificadores.
+No almacenes información personal en el catálogo.
+
+Si el almacenamiento está corrupto, no se reemplaza automáticamente: se ofrece
+descargar el contenido original y continuar temporalmente. Si otra pestaña
+cambia las notas, la pestaña actual pasa a modo temporal para evitar sobrescribirlas.
+Si no se puede guardar por falta de espacio, el cambio se rechaza con un aviso;
+puedes exportar lo guardado y activar el modo temporal en ajustes.
+
+El service worker almacena solo los archivos de la aplicación y el catálogo.
+Tras una primera carga completa, puede funcionar sin conexión en navegadores
+compatibles y mediante HTTPS o localhost. Una actualización ofrece un botón
+para recargar; no borra las notas. Nunca publiques notas personales en `public/`.
+
+## Desarrollo local
+
 El motor de cálculo y la validación están escritos en **Rust**, compilados a
 **WebAssembly**. La interfaz usa TypeScript, HTML y CSS, sin dependencias de
 ejecución ni servidor de datos. Se publica como un sitio estático.
 
-[Repositorio y código fuente](https://github.com/ivanpaguay13/calculadora-udla)
-· [Licencia AGPL v3](LICENSE)
+Esta sección es para ejecutar o modificar el proyecto en tu equipo. Para
+registrar tus notas, utiliza el [enlace web](https://ivanpaguay13.github.io/calculadora-udla/).
 
-## Para estudiantes
-
-1. Abre la calculadora y selecciona una materia.
-2. Introduce las calificaciones que ya tienes; deja vacías las pendientes.
-3. Ajusta tu meta personal para ver qué necesitas obtener en las actividades restantes.
-4. En **Respaldos y ajustes**, exporta una copia para conservar tus notas o
-   trasladarlas a otro dispositivo.
-
-No necesitas una cuenta. Cada navegador conserva sus propias notas. Si tu
-docente cambia los porcentajes, usa **Ajustar ponderaciones** dentro de la
-materia para crear una configuración local.
-
-## Requisitos
+### Requisitos de desarrollo
 
 - Rust estable instalado con rustup.
 - Node.js 22 y npm.
@@ -44,25 +102,6 @@ npm run build       # Genera dist/ con Rust WASM y la interfaz
 npm run preview     # Sirve una compilación existente
 npm run test:wasm   # Compara WASM con Rust nativo y comprueba el puente de memoria
 ```
-
-## Funciones
-
-- Resumen de semestre ponderado por créditos y detalle de cada materia.
-- Registro en escala 0–10 con hasta dos decimales, pendiente como `null`.
-- Aporte acumulado, promedio de lo evaluado, máximo alcanzable y nota definitiva.
-- Meta editable por materia y nota uniforme necesaria en las pendientes.
-- Guardado local por cada cambio válido; errores visibles si no puede guardarse.
-- Exportación e importación JSON con versión, fecha y validación completa.
-- Confirmación antes de reemplazar notas mediante una importación.
-- Ponderaciones personalizadas locales, siempre con 100 % por progreso.
-- Diseño adaptable, etiquetas accesibles, teclado y campos numéricos.
-- Caché sin conexión y manifiesto PWA. La instalación depende del navegador.
-
-La meta inicial `7.00` es personal y editable: no confirma el umbral institucional.
-Un resultado incompleto nunca se presenta como definitivo. El promedio de lo
-evaluado normaliza los pesos que tienen nota; el semestral incluye los créditos.
-El acumulado cuenta solo los puntos registrados y las pendientes aportan cero
-únicamente a ese indicador. El máximo supone 10 en todas las pendientes.
 
 ## Estructura
 
@@ -99,46 +138,19 @@ validados por el mismo motor que calcula los resultados.
 
 ## GitHub y publicación automática
 
-Repositorio: [ivanpaguay13/calculadora-udla](https://github.com/ivanpaguay13/calculadora-udla).
+La calculadora está publicada en
+[GitHub Pages](https://ivanpaguay13.github.io/calculadora-udla/).
+El código fuente está en
+[ivanpaguay13/calculadora-udla](https://github.com/ivanpaguay13/calculadora-udla).
 
-El proyecto incluye un flujo de GitHub Actions en
-[`pages.yml`](.github/workflows/pages.yml). Cada cambio subido a `main` ejecuta
-las pruebas, construye el sitio y lo publica en GitHub Pages. Las solicitudes
-de cambio ejecutan las mismas comprobaciones sin publicar.
+El flujo de GitHub Actions en [`pages.yml`](.github/workflows/pages.yml)
+ejecuta las pruebas, construye el sitio y lo publica con cada cambio subido a
+`main`. Las solicitudes de cambio ejecutan las mismas comprobaciones sin publicar.
 
-La configuración inicial del repositorio es:
-
-1. Crea un repositorio de GitHub y sube estos archivos a su rama `main`.
-2. En **Settings → Pages → Build and deployment**, selecciona **GitHub Actions**.
-3. El flujo `.github/workflows/pages.yml` prueba el motor, la persistencia y el
-   binario WASM antes de publicar `dist/`.
-4. Comparte la URL que devuelve el despliegue, normalmente
-   `https://TU_USUARIO.github.io/NOMBRE_REPOSITORIO/`.
-
-Todos los recursos usan rutas relativas, así que funcionan en el subdirectorio
-del repositorio. No necesitas dominio propio, backend, cuentas de alumnos ni
-base de datos remota. La publicación no se realiza hasta subir el proyecto a
-un repositorio y configurar Pages. El código, catálogo y sitio serán públicos
-al usar un repositorio público; las notas de cada usuario no se suben.
-
-## Datos y uso sin conexión
-
-Las notas pertenecen al navegador y al origen donde se abrió la aplicación.
-No se sincronizan entre dispositivos. Exporta un respaldo antes de borrar datos
-del sitio, usar navegación privada, cambiar de dominio o trasladarte de equipo.
-El respaldo guarda notas, `null`, metas, pesos locales y sus identificadores.
-No almacenes información personal en el catálogo.
-
-Si el almacenamiento está corrupto, no se reemplaza automáticamente: se ofrece
-descargar el contenido original y continuar temporalmente. Si otra pestaña
-cambia las notas, la pestaña actual pasa a modo temporal para evitar sobrescribirlas.
-Si no se puede guardar por falta de espacio, el cambio se rechaza con un aviso;
-puedes exportar lo guardado y activar el modo temporal en ajustes.
-
-El service worker almacena solo los archivos de la aplicación y el catálogo.
-Tras una primera carga completa, puede funcionar sin conexión en navegadores
-compatibles y mediante HTTPS o localhost. Una actualización ofrece un botón
-para recargar; no borra las notas. Nunca publiques notas personales en `public/`.
+Los recursos usan rutas relativas para funcionar en el subdirectorio del
+repositorio. Para publicar una copia del proyecto en otro repositorio,
+selecciona **GitHub Actions** en **Settings → Pages → Build and deployment**.
+Las notas de los usuarios permanecen en sus navegadores; no se suben al repositorio.
 
 ## Comprobaciones
 
