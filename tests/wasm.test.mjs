@@ -4,6 +4,7 @@ import { readFileSync } from 'node:fs';
 import { spawn } from 'node:child_process';
 import { connectEngine } from '../dist/app/grades/engine.js';
 import { initialState } from '../dist/app/storage/state.js';
+import { parseDecimalInput } from '../dist/app/grades/input.js';
 
 const bytes = readFileSync(new URL('../dist/grades.wasm', import.meta.url));
 const { instance } = await WebAssembly.instantiate(bytes, {});
@@ -43,4 +44,19 @@ test('WASM ABI releases allocations and keeps working after rejected input', () 
   const before = instance.exports.memory.buffer.byteLength;
   for (let i = 0; i < 1000; i++) evaluate(state);
   assert.equal(instance.exports.memory.buffer.byteLength, before);
+});
+
+test('localized UI decimals reach Rust as exact grades, targets and custom weights', () => {
+  const state = initialState(catalog);
+  const note = parseDecimalInput('8,25'); assert.equal(note.kind, 'valid');
+  state.grades['MEDZ4399/P1/p1_e01'] = note.value;
+  const target = parseDecimalInput('7,50'); assert.equal(target.kind, 'valid');
+  state.targets.MEDZ4399 = target.value;
+  for (const [id, raw] of [['p1_e01', '33,33'], ['p1_e02', '33,33'], ['p1_e03', '33,34']]) {
+    const weight = parseDecimalInput(raw, { minCents: 1, maxCents: 10000 }); assert.equal(weight.kind, 'valid');
+    state.weights[`MEDZ4399/P1/${id}`] = weight.value;
+  }
+  const report = evaluate(state).subjects.MEDZ4399;
+  assert.equal(report.partial, '8.25'); assert.equal(report.simulation.target, '7.50');
+  assert.equal(report.progresses.P1.weights.p1_e01, '33.33');
 });

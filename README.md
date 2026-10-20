@@ -12,8 +12,10 @@ solo necesitas un navegador compatible con WebAssembly; no tienes que instalar
 Rust, Node.js ni descargar el proyecto. Tampoco necesitas una cuenta.
 
 1. Selecciona una materia en el resumen del semestre.
-2. Introduce las calificaciones que ya tienes, de **0 a 10**. Deja vacías las
-   actividades pendientes; registra `0` solo cuando esa sea tu calificación real.
+2. Introduce las calificaciones que ya tienes, de **0 a 10**, con hasta dos
+   decimales. Puedes escribir **8,25** o **8.25**, también desde el teclado de
+   un iPhone. Deja vacías las actividades pendientes; registra `0` solo cuando
+   esa sea tu calificación real.
 3. Ajusta **Mi meta para esta materia** para ver qué necesitas obtener en las
    actividades restantes.
 4. Revisa tus resultados por progreso, materia y semestre.
@@ -172,11 +174,12 @@ referencias de página permiten contrastarlo cuando se disponga de los sílabos.
 
 Primera versión funcional, con uso local confirmado por el usuario. El
 objetivo `wasm32-unknown-unknown` ya está instalado en el entorno de desarrollo.
-La compilación web y las dos pruebas de integración WebAssembly pasaron:
+La compilación web y las pruebas de integración WebAssembly pasaron:
 el motor WASM produce los mismos resultados que Rust nativo y libera sus
 asignaciones de memoria incluso después de rechazar datos inválidos. También
-se comprobaron previamente 11 pruebas de Rust, 6 de persistencia, los tipos de
-TypeScript, rustfmt y Clippy.
+se comprobaron las pruebas de Rust y persistencia, los tipos de TypeScript,
+rustfmt y Clippy. Las pruebas de entrada cubren coma y punto decimal, escritura
+por pasos, notas pendientes y conservación de la última nota válida ante errores.
 
 El flujo de GitHub Actions instala el objetivo WASM antes de compilar y
 comprobar la integración. La instalación como PWA y las actualizaciones sin

@@ -1,6 +1,8 @@
 import { loadEngine } from './grades/engine.js';
+import { parseDecimalInput } from './grades/input.js';
+import { bindDecimalField } from './components/decimal-field.js';
 import { button, download, el, meter, metric, numericInput } from './components/dom.js';
-import { commit, exportBackup, initialState, MAX_BACKUP_BYTES, normalizeDecimal, parseBackup, restore, STORAGE_KEY } from './storage/state.js';
+import { commit, exportBackup, initialState, MAX_BACKUP_BYTES, parseBackup, restore, STORAGE_KEY } from './storage/state.js';
 import { gradeKey, PROGRESSES } from './types.js';
 import type { Catalog, Evaluate, Progress, Report, State, Subject, SubjectReport } from './types.js';
 
@@ -130,23 +132,11 @@ function simulation(m: Subject, r: SubjectReport): HTMLElement {
   panel.setAttribute('aria-label', `Simulación de ${m.nombre}`); panel.append(text, figure); return panel;
 }
 function noteField(input: HTMLInputElement, apply: (value: string | null) => State, error: HTMLElement, optional = true): void {
-  input.addEventListener('input', () => {
-    input.setCustomValidity('');
-    let message = '';
-    const normalized = normalizeDecimal(input.value);
-    if (input.validity.badInput || !input.checkValidity()) message = 'Usa una nota de 0 a 10 con hasta dos decimales.';
-    else if (!optional && normalized === null) message = 'Introduce una meta de 0 a 10.';
-    else {
-      try { evaluate(apply(normalized)); } catch (e) { message = e instanceof Error ? e.message : 'Nota inválida.'; }
-    }
-    input.setCustomValidity(message); input.setAttribute('aria-invalid', String(!!message));
-    error.textContent = message;
-    if (!message && !change(apply(normalized))) error.textContent = 'El cambio no se guardó. Revisa el aviso superior.';
-  });
+  bindDecimalField(input, error, value => change(apply(value)), !optional);
 }
 function detail(main: HTMLElement, m: Subject): void {
   const back = el('a', 'back-link', '← Volver al semestre'); back.href = '#'; main.append(back);
-  const heading = title(main, `${m.codigo} / ${m.creditos} CRÉDITOS`, m.nombre, 'Registra una nota por actividad. Puedes dejar vacías las que todavía no tienes.');
+  const heading = title(main, `${m.codigo} / ${m.creditos} CRÉDITOS`, m.nombre, 'Registra una nota por actividad, con coma o punto decimal (8,25 o 8.25). Puedes dejar vacías las que todavía no tienes.');
   heading.append(button('Ajustar ponderaciones', () => weightEditor(m), 'button secondary'));
   const stats = el('section', 'stats'); live(stats, () => summaryStats(report.subjects[m.codigo]!)); main.append(stats);
   const goalSection = el('section', 'goal-section');
@@ -206,7 +196,7 @@ function dialog(titleText: string): { dialog: HTMLDialogElement; body: HTMLEleme
 function weightEditor(m: Subject): void {
   const { body, close } = dialog('Ponderaciones personalizadas');
   body.append(el('p', 'intro', 'Crea una copia local para los cambios que comunique tu docente. Cada progreso debe sumar 100 %; las actividades y el catálogo original se conservan.'));
-  const form = el('form'); const inputs: [string, HTMLInputElement][] = [];
+  const form = el('form'); form.noValidate = true; const inputs: [string, HTMLInputElement][] = [];
   PROGRESSES.forEach(p => {
     const fieldset = el('fieldset', 'weight-group'); fieldset.append(el('legend', '', `Progreso ${p.slice(1)}`));
     const sum = el('p', 'weight-total');
@@ -214,11 +204,24 @@ function weightEditor(m: Subject): void {
     m.progresos[p].forEach(a => {
       const label = el('label', 'weight-row'); label.append(el('span', '', a.nombre));
       const k = gradeKey(m.codigo, p, a.id);
-      const input = numericInput(state.weights[k] ?? String(a.peso_pct), `Peso de ${a.nombre} en ${p}`, '100'); input.min = '0.01'; input.required = true;
+      const input = numericInput(state.weights[k] ?? String(a.peso_pct), `Peso de ${a.nombre} en ${p}`); input.required = true;
       label.append(input, el('span', '', '%')); fieldset.append(label); inputs.push([k, input]); group.push(input);
     });
-    const refresh = () => { const total = group.reduce((sum, input) => sum + Math.round(Number(input.value) * 100), 0); sum.textContent = `Total: ${(total / 100).toFixed(2)} % / 100 %`; sum.classList.toggle('invalid-total', total !== 10000); };
-    group.forEach(input => input.addEventListener('input', refresh)); refresh(); fieldset.append(sum); form.append(fieldset);
+    const refresh = () => {
+      const parsed = group.map(input => parseDecimalInput(input.value, { minCents: 1, maxCents: 10000 }));
+      const total = parsed.reduce((sum, value) => sum + (value.kind === 'valid' ? value.cents : 0), 0);
+      const complete = parsed.every(value => value.kind === 'valid');
+      sum.textContent = complete ? `Total: ${(total / 100).toFixed(2)} % / 100 %` : 'Completa los pesos con números mayores que 0 y hasta 100, con un máximo de dos decimales. Acepta coma o punto.';
+      sum.classList.toggle('invalid-total', !complete || total !== 10000);
+    };
+    group.forEach(input => {
+      input.addEventListener('input', () => { input.setCustomValidity(''); input.setAttribute('aria-invalid', 'false'); refresh(); });
+      input.addEventListener('blur', () => {
+        const parsed = parseDecimalInput(input.value, { minCents: 1, maxCents: 10000, finish: true });
+        if (parsed.kind === 'valid') input.value = parsed.value;
+        refresh();
+      });
+    }); refresh(); fieldset.append(sum); form.append(fieldset);
   });
   const error = el('p', 'field-error'); error.setAttribute('role', 'alert');
   const actions = el('div', 'dialog-actions');
@@ -229,7 +232,14 @@ function weightEditor(m: Subject): void {
   const submit = el('button', 'button primary', 'Guardar configuración'); submit.type = 'submit'; actions.append(submit);
   form.append(error, actions); form.addEventListener('submit', event => {
     event.preventDefault(); const weights = { ...state.weights };
-    inputs.forEach(([k, input]) => { weights[k] = normalizeDecimal(input.value) ?? ''; });
+    for (const [k, input] of inputs) {
+      const parsed = parseDecimalInput(input.value, { minCents: 1, maxCents: 10000, finish: true });
+      if (parsed.kind !== 'valid') {
+        const message = parsed.kind === 'invalid' ? parsed.message : 'Introduce un peso mayor que 0 y hasta 100.';
+        error.textContent = message; input.setCustomValidity(message); input.setAttribute('aria-invalid', 'true'); input.focus(); return;
+      }
+      weights[k] = parsed.value;
+    }
     const candidate = { ...state, weights };
     try { evaluate(candidate); } catch (e) { error.textContent = e instanceof Error ? e.message : 'Configuración inválida.'; return; }
     if (change(candidate)) { close(); render(); announce('Configuración personalizada guardada en este dispositivo.'); }

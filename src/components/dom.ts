@@ -25,8 +25,11 @@ export function download(text: string, name: string): void {
   const a = el('a'); a.href = url; a.download = name; a.click();
   setTimeout(() => URL.revokeObjectURL(url), 1000);
 }
-export function numericInput(value: string | null, label: string, max = '10'): HTMLInputElement {
-  const input = el('input', 'number-input'); input.type = 'number'; input.min = '0'; input.max = max;
-  input.step = '0.01'; input.inputMode = 'decimal'; input.value = value ?? ''; input.placeholder = '—';
+export function numericInput(value: string | null, label: string): HTMLInputElement {
+  // Keep the raw comma/point, including intermediate "8,". Number inputs can
+  // sanitize these to an empty string on iOS before our input handler sees them.
+  const input = el('input', 'number-input'); input.type = 'text'; input.inputMode = 'decimal';
+  input.autocomplete = 'off'; input.spellcheck = false; input.maxLength = 16; input.enterKeyHint = 'done';
+  input.value = value ?? ''; input.placeholder = '—';
   input.setAttribute('aria-label', label); return input;
 }
