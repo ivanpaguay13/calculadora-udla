@@ -1,0 +1,21 @@
+{
+  "name": "calculadora-notas",
+  "version": "0.1.0",
+  "license": "AGPL-3.0-only",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ivanpaguay13/calculadora-udla.git"
+  },
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "check": "tsc --noEmit",
+    "build": "node scripts/build.mjs",
+    "dev": "npm run build && node scripts/serve.mjs",
+    "preview": "node scripts/serve.mjs",
+    "test": "cargo test --locked && npm run test:web",
+    "test:web": "tsc && node tests/storage.test.mjs",
+    "test:wasm": "node tests/wasm.test.mjs"
+  },
+  "devDependencies": { "typescript": "5.9.2" }
+}

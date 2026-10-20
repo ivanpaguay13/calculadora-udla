@@ -1,0 +1,773 @@
+{
+  "version": 1,
+  "origen": "Sílabos de Medicina UDLA, período 202710, aportados por el usuario",
+  "periodo": "202710",
+  "escala": {
+    "min": 0,
+    "max": 10,
+    "unidad": "puntos"
+  },
+  "nota_objetivo_inicial": "7.00",
+  "advertencia_nota_objetivo": "7.00 es un valor editable para simulaciones; NO consta aquí una confirmación del umbral oficial de aprobación.",
+  "pesos_progresos_pct": {
+    "P1": 25,
+    "P2": 35,
+    "P3": 40
+  },
+  "creditos_totales": "20.00",
+  "materias": [
+    {
+      "codigo": "MEDZ4396",
+      "nombre": "Farmacología I",
+      "creditos": "5.00",
+      "silabo": "Syllabus_MEDZ4396_202710.pdf",
+      "progresos": {
+        "P1": [
+          {
+            "nombre": "Infografía sobre el desarrollo de un nuevo fármaco",
+            "peso_pct": 6,
+            "pagina_silabo": 6,
+            "id": "p1_e01"
+          },
+          {
+            "nombre": "Paso 1: Diagnóstico",
+            "peso_pct": 6,
+            "pagina_silabo": 7,
+            "id": "p1_e02"
+          },
+          {
+            "nombre": "Evaluación parcial 1",
+            "peso_pct": 35,
+            "pagina_silabo": 7,
+            "id": "p1_e03"
+          },
+          {
+            "nombre": "Paso 2: Objetivo terapéutico",
+            "peso_pct": 6,
+            "pagina_silabo": 8,
+            "id": "p1_e04"
+          },
+          {
+            "nombre": "Evaluación parcial 2",
+            "peso_pct": 35,
+            "pagina_silabo": 9,
+            "id": "p1_e05"
+          },
+          {
+            "nombre": "Paso 3: Inventario de grupos de fármacos efectivos",
+            "peso_pct": 12,
+            "pagina_silabo": 9,
+            "id": "p1_e06"
+          }
+        ],
+        "P2": [
+          {
+            "nombre": "Integración de los pasos 1, 2 y 3",
+            "peso_pct": 6,
+            "pagina_silabo": 11,
+            "id": "p2_e01"
+          },
+          {
+            "nombre": "Paso 4: Análisis de seguridad",
+            "peso_pct": 6,
+            "pagina_silabo": 13,
+            "id": "p2_e02"
+          },
+          {
+            "nombre": "Paso 4: Conveniencia",
+            "peso_pct": 6,
+            "pagina_silabo": 14,
+            "id": "p2_e03"
+          },
+          {
+            "nombre": "Evaluación parcial 3",
+            "peso_pct": 35,
+            "pagina_silabo": 14,
+            "id": "p2_e04"
+          },
+          {
+            "nombre": "Paso 4: Eficiencia",
+            "peso_pct": 6,
+            "pagina_silabo": 15,
+            "id": "p2_e05"
+          },
+          {
+            "nombre": "Evaluación parcial 4",
+            "peso_pct": 35,
+            "pagina_silabo": 16,
+            "id": "p2_e06"
+          },
+          {
+            "nombre": "Paso 5: Consolidación de los cinco productos finales",
+            "peso_pct": 6,
+            "pagina_silabo": 17,
+            "id": "p2_e07"
+          }
+        ],
+        "P3": [
+          {
+            "nombre": "Presentación de estrategia de selección de fármacos",
+            "peso_pct": 20,
+            "pagina_silabo": 21,
+            "id": "p3_e01"
+          },
+          {
+            "nombre": "Evaluación parcial 5",
+            "peso_pct": 20,
+            "pagina_silabo": 21,
+            "id": "p3_e02"
+          },
+          {
+            "nombre": "Examen final",
+            "peso_pct": 30,
+            "pagina_silabo": 24,
+            "id": "p3_e03"
+          },
+          {
+            "nombre": "Examen integrador",
+            "peso_pct": 30,
+            "pagina_silabo": 24,
+            "id": "p3_e04"
+          }
+        ]
+      }
+    },
+    {
+      "codigo": "MEDZ4397",
+      "nombre": "Nutrición",
+      "creditos": "1.66",
+      "silabo": "Syllabus_MEDZ4397_202710.pdf",
+      "progresos": {
+        "P1": [
+          {
+            "nombre": "Examen parcial 1",
+            "peso_pct": 30,
+            "pagina_silabo": 4,
+            "id": "p1_e01"
+          },
+          {
+            "nombre": "Examen parcial 2",
+            "peso_pct": 30,
+            "pagina_silabo": 6,
+            "id": "p1_e02"
+          },
+          {
+            "nombre": "Examen parcial 3",
+            "peso_pct": 40,
+            "pagina_silabo": 8,
+            "id": "p1_e03"
+          }
+        ],
+        "P2": [
+          {
+            "nombre": "Examen parcial 4",
+            "peso_pct": 35,
+            "pagina_silabo": 10,
+            "id": "p2_e01"
+          },
+          {
+            "nombre": "Examen parcial 5",
+            "peso_pct": 35,
+            "pagina_silabo": 11,
+            "id": "p2_e02"
+          },
+          {
+            "nombre": "Examen parcial 6",
+            "peso_pct": 30,
+            "pagina_silabo": 12,
+            "id": "p2_e03"
+          }
+        ],
+        "P3": [
+          {
+            "nombre": "Examen parcial 7",
+            "peso_pct": 30,
+            "pagina_silabo": 14,
+            "id": "p3_e01"
+          },
+          {
+            "nombre": "Examen final",
+            "peso_pct": 40,
+            "pagina_silabo": 16,
+            "id": "p3_e02"
+          },
+          {
+            "nombre": "Examen integrador",
+            "peso_pct": 30,
+            "pagina_silabo": 17,
+            "id": "p3_e03"
+          }
+        ]
+      }
+    },
+    {
+      "codigo": "MEDZ4398",
+      "nombre": "Genética",
+      "creditos": "2.50",
+      "silabo": "Syllabus_MEDZ4398_202710.pdf",
+      "progresos": {
+        "P1": [
+          {
+            "nombre": "Evaluación parcial teórica 1",
+            "peso_pct": 35,
+            "pagina_silabo": 4,
+            "id": "p1_e01"
+          },
+          {
+            "nombre": "Evaluación parcial práctica 1",
+            "peso_pct": 30,
+            "pagina_silabo": 6,
+            "id": "p1_e02"
+          },
+          {
+            "nombre": "Evaluación parcial teórica 2",
+            "peso_pct": 35,
+            "pagina_silabo": 6,
+            "id": "p1_e03"
+          }
+        ],
+        "P2": [
+          {
+            "nombre": "Evaluación parcial teórica 3",
+            "peso_pct": 35,
+            "pagina_silabo": 8,
+            "id": "p2_e01"
+          },
+          {
+            "nombre": "Evaluación práctica 2",
+            "peso_pct": 30,
+            "pagina_silabo": 10,
+            "id": "p2_e02"
+          },
+          {
+            "nombre": "Evaluación parcial teórica 4",
+            "peso_pct": 35,
+            "pagina_silabo": 10,
+            "id": "p2_e03"
+          }
+        ],
+        "P3": [
+          {
+            "nombre": "Evaluación parcial 5",
+            "peso_pct": 20,
+            "pagina_silabo": 12,
+            "id": "p3_e01"
+          },
+          {
+            "nombre": "Examen acumulativo de práctica",
+            "peso_pct": 20,
+            "pagina_silabo": 14,
+            "id": "p3_e02"
+          },
+          {
+            "nombre": "Examen acumulativo final",
+            "peso_pct": 30,
+            "pagina_silabo": 14,
+            "id": "p3_e03"
+          },
+          {
+            "nombre": "Examen integrador",
+            "peso_pct": 30,
+            "pagina_silabo": 14,
+            "id": "p3_e04"
+          }
+        ]
+      }
+    },
+    {
+      "codigo": "MEDZ4399",
+      "nombre": "Diagnóstico por Imagen I",
+      "creditos": "1.67",
+      "silabo": "Syllabus_MEDZ4399_202710.pdf",
+      "progresos": {
+        "P1": [
+          {
+            "nombre": "Primer examen teórico (PG1)",
+            "peso_pct": 35,
+            "pagina_silabo": 5,
+            "id": "p1_e01"
+          },
+          {
+            "nombre": "Aplicación práctica 1",
+            "peso_pct": 30,
+            "pagina_silabo": 6,
+            "id": "p1_e02"
+          },
+          {
+            "nombre": "Parcial 2",
+            "peso_pct": 35,
+            "pagina_silabo": 6,
+            "id": "p1_e03"
+          }
+        ],
+        "P2": [
+          {
+            "nombre": "Parcial 3",
+            "peso_pct": 35,
+            "pagina_silabo": 9,
+            "id": "p2_e01"
+          },
+          {
+            "nombre": "Aplicación práctica 2",
+            "peso_pct": 30,
+            "pagina_silabo": 10,
+            "id": "p2_e02"
+          },
+          {
+            "nombre": "Parcial 4",
+            "peso_pct": 35,
+            "pagina_silabo": 11,
+            "id": "p2_e03"
+          }
+        ],
+        "P3": [
+          {
+            "nombre": "Aplicación práctica 3",
+            "peso_pct": 10,
+            "pagina_silabo": 16,
+            "id": "p3_e01"
+          },
+          {
+            "nombre": "Examen final acumulativo",
+            "peso_pct": 20,
+            "pagina_silabo": 16,
+            "id": "p3_e02"
+          },
+          {
+            "nombre": "Examen integrador",
+            "peso_pct": 30,
+            "pagina_silabo": 16,
+            "id": "p3_e03"
+          },
+          {
+            "nombre": "Examen de externado",
+            "peso_pct": 40,
+            "pagina_silabo": 16,
+            "id": "p3_e04"
+          }
+        ]
+      }
+    },
+    {
+      "codigo": "MEDZ4400",
+      "nombre": "Psicopatología Descriptiva I",
+      "creditos": "1.67",
+      "silabo": "Syllabus_MEDZ4400_202710.pdf",
+      "progresos": {
+        "P1": [
+          {
+            "nombre": "Prueba parcial 1",
+            "peso_pct": 30,
+            "pagina_silabo": 4,
+            "id": "p1_e01"
+          },
+          {
+            "nombre": "Prueba parcial 2",
+            "peso_pct": 35,
+            "pagina_silabo": 5,
+            "id": "p1_e02"
+          },
+          {
+            "nombre": "Prueba parcial 3",
+            "peso_pct": 35,
+            "pagina_silabo": 5,
+            "id": "p1_e03"
+          }
+        ],
+        "P2": [
+          {
+            "nombre": "Prueba parcial 4",
+            "peso_pct": 30,
+            "pagina_silabo": 6,
+            "id": "p2_e01"
+          },
+          {
+            "nombre": "Prueba parcial 5",
+            "peso_pct": 35,
+            "pagina_silabo": 7,
+            "id": "p2_e02"
+          },
+          {
+            "nombre": "Prueba parcial 6",
+            "peso_pct": 35,
+            "pagina_silabo": 8,
+            "id": "p2_e03"
+          }
+        ],
+        "P3": [
+          {
+            "nombre": "Prueba parcial 7",
+            "peso_pct": 20,
+            "pagina_silabo": 10,
+            "id": "p3_e01"
+          },
+          {
+            "nombre": "Evaluación de la actividad práctica",
+            "peso_pct": 20,
+            "pagina_silabo": 11,
+            "id": "p3_e02"
+          },
+          {
+            "nombre": "Examen final",
+            "peso_pct": 30,
+            "pagina_silabo": 11,
+            "id": "p3_e03"
+          },
+          {
+            "nombre": "Examen integrador",
+            "peso_pct": 30,
+            "pagina_silabo": 12,
+            "id": "p3_e04"
+          }
+        ]
+      }
+    },
+    {
+      "codigo": "MEDZ4401",
+      "nombre": "Propedéutica Clínica II",
+      "creditos": "5.00",
+      "silabo": "Syllabus_MEDZ4401_202710.pdf",
+      "progresos": {
+        "P1": [
+          {
+            "nombre": "Primera evaluación sumativa del progreso 1",
+            "peso_pct": 20,
+            "pagina_silabo": 6,
+            "id": "p1_e01"
+          },
+          {
+            "nombre": "Habilidades prácticas en aula",
+            "peso_pct": 5,
+            "pagina_silabo": 8,
+            "id": "p1_e02"
+          },
+          {
+            "nombre": "Razonamiento clínico",
+            "peso_pct": 5,
+            "pagina_silabo": 9,
+            "id": "p1_e03"
+          },
+          {
+            "nombre": "Actividad integradora con paciente simulado",
+            "peso_pct": 20,
+            "pagina_silabo": 10,
+            "id": "p1_e04"
+          },
+          {
+            "nombre": "Segunda evaluación sumativa del progreso 1",
+            "peso_pct": 20,
+            "pagina_silabo": 10,
+            "id": "p1_e05"
+          },
+          {
+            "nombre": "Examen físico de piel, pelo, uñas y mucosas",
+            "peso_pct": 10,
+            "pagina_silabo": 11,
+            "id": "p1_e06"
+          },
+          {
+            "nombre": "Evaluación práctica sumativa del progreso 1",
+            "peso_pct": 20,
+            "pagina_silabo": 13,
+            "id": "p1_e07"
+          }
+        ],
+        "P2": [
+          {
+            "nombre": "Actividad integradora con paciente simulado (primera)",
+            "peso_pct": 10,
+            "pagina_silabo": 13,
+            "id": "p2_e01"
+          },
+          {
+            "nombre": "Primera evaluación sumativa del progreso 2",
+            "peso_pct": 20,
+            "pagina_silabo": 17,
+            "id": "p2_e02"
+          },
+          {
+            "nombre": "Razonamiento clínico",
+            "peso_pct": 5,
+            "pagina_silabo": 19,
+            "id": "p2_e03"
+          },
+          {
+            "nombre": "Habilidades prácticas en aula",
+            "peso_pct": 5,
+            "pagina_silabo": 19,
+            "id": "p2_e04"
+          },
+          {
+            "nombre": "Examen físico de garganta y cavidad bucal",
+            "peso_pct": 10,
+            "pagina_silabo": 20,
+            "id": "p2_e05"
+          },
+          {
+            "nombre": "Actividad integradora con paciente simulado (segunda)",
+            "peso_pct": 10,
+            "pagina_silabo": 20,
+            "id": "p2_e06"
+          },
+          {
+            "nombre": "Segunda evaluación sumativa del progreso 2",
+            "peso_pct": 20,
+            "pagina_silabo": 21,
+            "id": "p2_e07"
+          },
+          {
+            "nombre": "Evaluación práctica sumativa del progreso 2",
+            "peso_pct": 20,
+            "pagina_silabo": 22,
+            "id": "p2_e08"
+          }
+        ],
+        "P3": [
+          {
+            "nombre": "Primera evaluación sumativa del progreso 3",
+            "peso_pct": 15,
+            "pagina_silabo": 25,
+            "id": "p3_e01"
+          },
+          {
+            "nombre": "Examen físico cardiovascular: auscultación",
+            "peso_pct": 5,
+            "pagina_silabo": 29,
+            "id": "p3_e02"
+          },
+          {
+            "nombre": "Habilidades prácticas en aula",
+            "peso_pct": 5,
+            "pagina_silabo": 29,
+            "id": "p3_e03"
+          },
+          {
+            "nombre": "Razonamiento clínico",
+            "peso_pct": 5,
+            "pagina_silabo": 29,
+            "id": "p3_e04"
+          },
+          {
+            "nombre": "Actividad integradora con paciente simulado",
+            "peso_pct": 10,
+            "pagina_silabo": 30,
+            "id": "p3_e05"
+          },
+          {
+            "nombre": "Evaluación práctica sumativa del progreso 3",
+            "peso_pct": 10,
+            "pagina_silabo": 30,
+            "id": "p3_e06"
+          },
+          {
+            "nombre": "Evaluación final unificada acumulativa",
+            "peso_pct": 20,
+            "pagina_silabo": 32,
+            "id": "p3_e07"
+          },
+          {
+            "nombre": "Examen integrador",
+            "peso_pct": 30,
+            "pagina_silabo": 33,
+            "id": "p3_e08"
+          }
+        ]
+      },
+      "observacion": "Las etiquetas primera/segunda de las actividades con paciente simulado del progreso 2 son identificadores internos añadidos para distinguir evaluaciones homónimas; ambas se denominan actividad integradora con paciente simulado en el sílabo."
+    },
+    {
+      "codigo": "MEDZ4402",
+      "nombre": "Promoción de la Salud",
+      "creditos": "0.83",
+      "silabo": "Syllabus_MEDZ4402_202710.pdf",
+      "progresos": {
+        "P1": [
+          {
+            "nombre": "Tarea grupal: atención primaria y enfoque familiar",
+            "peso_pct": 15,
+            "pagina_silabo": 3,
+            "sesion": 1,
+            "id": "p1_e01"
+          },
+          {
+            "nombre": "Tarea grupal: niñez y adolescencia",
+            "peso_pct": 15,
+            "pagina_silabo": 3,
+            "sesion": 2,
+            "id": "p1_e02"
+          },
+          {
+            "nombre": "Tarea grupal: adulto y salud de la mujer",
+            "peso_pct": 15,
+            "pagina_silabo": 4,
+            "sesion": 3,
+            "id": "p1_e03"
+          },
+          {
+            "nombre": "Evaluación parcial 1",
+            "peso_pct": 30,
+            "pagina_silabo": 4,
+            "sesion": 4,
+            "id": "p1_e04"
+          },
+          {
+            "nombre": "Tarea grupal: línea de curso de vida",
+            "peso_pct": 25,
+            "pagina_silabo": 4,
+            "sesion": 5,
+            "id": "p1_e05"
+          }
+        ],
+        "P2": [
+          {
+            "nombre": "Tarea grupal: salud reproductiva",
+            "peso_pct": 15,
+            "pagina_silabo": 5,
+            "sesion": 6,
+            "id": "p2_e01"
+          },
+          {
+            "nombre": "Entrega de cronograma para ciclos de intervención comunitaria",
+            "peso_pct": 20,
+            "pagina_silabo": 5,
+            "sesion": 7,
+            "id": "p2_e02"
+          },
+          {
+            "nombre": "Tarea grupal: alimentación y dietas terapéuticas",
+            "peso_pct": 15,
+            "pagina_silabo": 5,
+            "sesion": 8,
+            "id": "p2_e03"
+          },
+          {
+            "nombre": "Evaluación parcial 2",
+            "peso_pct": 30,
+            "pagina_silabo": 6,
+            "sesion": 9,
+            "id": "p2_e04"
+          },
+          {
+            "nombre": "Tarea grupal: obesidad y diabetes mellitus",
+            "peso_pct": 20,
+            "pagina_silabo": 6,
+            "sesion": 10,
+            "id": "p2_e05"
+          }
+        ],
+        "P3": [
+          {
+            "nombre": "Tarea grupal: salud mental",
+            "peso_pct": 5,
+            "pagina_silabo": 7,
+            "sesion": 11,
+            "id": "p3_e01"
+          },
+          {
+            "nombre": "Tarea grupal: tabaquismo y otras dependencias",
+            "peso_pct": 5,
+            "pagina_silabo": 7,
+            "sesion": 12,
+            "id": "p3_e02"
+          },
+          {
+            "nombre": "Exposición grupal: socialización de resultados",
+            "peso_pct": 20,
+            "pagina_silabo": 8,
+            "id": "p3_e03"
+          },
+          {
+            "nombre": "Examen final",
+            "peso_pct": 30,
+            "pagina_silabo": 9,
+            "sesion": 16,
+            "id": "p3_e04"
+          },
+          {
+            "nombre": "Examen integrador",
+            "peso_pct": 40,
+            "pagina_silabo": 9,
+            "sesion": 17,
+            "id": "p3_e05"
+          }
+        ]
+      },
+      "observacion": "Los temas tras «Tarea grupal» se añaden a modo de identificador basándose en la sesión del sílabo. La columna de evaluación denomina genéricamente «Tarea grupal» a varias actividades."
+    },
+    {
+      "codigo": "MEDZ4403",
+      "nombre": "Bioética y Legislación Médica",
+      "creditos": "1.67",
+      "silabo": "Syllabus_MEDZ4403_202710.pdf",
+      "progresos": {
+        "P1": [
+          {
+            "nombre": "Análisis de la película Patch Adams: trabajo presencial de aplicación de conocimiento",
+            "peso_pct": 30,
+            "pagina_silabo": 4,
+            "id": "p1_e01"
+          },
+          {
+            "nombre": "Informe grupal de resolución de caso clínico",
+            "peso_pct": 30,
+            "pagina_silabo": 5,
+            "id": "p1_e02"
+          },
+          {
+            "nombre": "Prueba parcial del progreso 1",
+            "peso_pct": 40,
+            "pagina_silabo": 5,
+            "id": "p1_e03"
+          }
+        ],
+        "P2": [
+          {
+            "nombre": "Informe grupal de resolución de caso clínico",
+            "peso_pct": 35,
+            "pagina_silabo": 7,
+            "id": "p2_e01"
+          },
+          {
+            "nombre": "Role playing: comunicación de malas noticias",
+            "peso_pct": 35,
+            "pagina_silabo": 8,
+            "id": "p2_e02"
+          },
+          {
+            "nombre": "Prueba parcial del progreso 2",
+            "peso_pct": 30,
+            "pagina_silabo": 8,
+            "id": "p2_e03"
+          }
+        ],
+        "P3": [
+          {
+            "nombre": "Debate sobre IA y otros recursos tecnológicos en salud",
+            "peso_pct": 30,
+            "pagina_silabo": 11,
+            "id": "p3_e01"
+          },
+          {
+            "nombre": "Examen final acumulativo",
+            "peso_pct": 40,
+            "pagina_silabo": 12,
+            "id": "p3_e02"
+          },
+          {
+            "nombre": "Examen integrador",
+            "peso_pct": 30,
+            "pagina_silabo": 12,
+            "id": "p3_e03"
+          }
+        ]
+      }
+    }
+  ],
+  "anotaciones": [
+    "Los porcentajes de cada actividad se aplican dentro de su progreso y no directamente al semestre.",
+    "Porcentajes y actividades transcritos de la columna Evaluaciones, sección F (Planificación y Evaluación), de cada PDF.",
+    "Verificar los ajustes que comunique cada docente si cambian con respecto al sílabo publicado.",
+    "No asignar 0 a una calificación pendiente: usar null.",
+    "Los nombres entre paréntesis que distinguen actividades idénticas en Propedéutica II y las etiquetas temáticas de tareas grupales en Promoción son aclaraciones editoriales."
+  ]
+}
