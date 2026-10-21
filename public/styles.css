@@ -10,3 +10,62 @@
 @media(max-width:600px){.sidebar{padding:15px 18px}.topbar{padding:0 18px}.topbar-title{display:none}.topbar{justify-content:flex-end;height:38px}.main{padding:26px 18px}.page-heading{flex-direction:column;gap:18px}.page-heading .button{align-self:flex-start}.eyebrow{font-size:.6rem}.intro{font-size:.86rem}h1{font-size:2rem}.semester-hero{padding:24px 22px}.hero-art{display:none}.semester-hero h2{font-size:1.4rem}.semester-hero p{font-size:.83rem}.semester-hero .meter-wrap{margin-top:20px}.stats>.live-region{grid-template-columns:repeat(2,minmax(0,1fr));padding:0}.stats .metric{padding:18px;border-right:0}.stats .metric:nth-child(odd){border-right:1px solid var(--line)}.stats .metric:nth-child(-n+2){border-bottom:1px solid var(--line)}.metric-value{font-size:1.45rem}.metric-label{font-size:.69rem}.metric-detail{font-size:.65rem}.section-heading{align-items:flex-start;flex-direction:column;gap:8px}.section-heading>.muted{font-size:.75rem}.subject-grid{grid-template-columns:1fr;gap:15px}.subject-card{padding:22px}.subject-card h3{min-height:0;margin-bottom:20px}.goal-label{font-size:.8rem;gap:10px}.simulation{padding:22px;align-items:flex-start;flex-direction:column;gap:16px}.simulation-figure{border-left:0;padding-left:0;flex-direction:row;align-items:center;gap:12px}.simulation-figure strong{font-size:2rem}.simulation-figure span{font-size:.7rem}.progress-title{gap:8px}.progress-title>.pill{font-size:.6rem}.progress-status{font-size:.7rem}.activity-columns{grid-template-columns:minmax(0,1fr) 80px;font-size:.55rem;padding:14px 16px}.activity-columns span:nth-child(2){display:none}.activity-row{grid-template-columns:minmax(0,1fr) 80px;gap:12px;padding:18px 16px}.activity-info{grid-column:1;grid-row:1}.activity-weight{grid-column:1;grid-row:2}.activity-weight>.live-region{flex-direction:row;gap:10px;align-items:center}.activity-weight strong{font-size:.7rem}.activity-weight .muted{font-size:.6rem}.grade-field{grid-column:2;grid-row:1 / span 2}.activity-source{font-size:.6rem}.activity-name{font-size:.8rem}.progress-footer{padding:20px 16px}.progress-footer>.live-region{grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}.progress-footer .metric-label{font-size:.63rem}.notice{margin:15px 18px 0}.settings-panel{padding:22px}.help-list{grid-template-columns:1fr;gap:7px}.help-list dd{margin-bottom:16px}.dialog-heading{padding:15px 18px}.dialog-heading h2{font-size:1.05rem}.dialog-heading .button{font-size:.7rem;padding:8px}.dialog-body{padding:18px}.weight-group{padding:12px}.weight-row{grid-template-columns:1fr 70px 10px;font-size:.76rem;gap:8px}.number-input{font-size:.95rem}}
 .update-banner{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);z-index:20;display:flex;align-items:center;gap:14px;max-width:calc(100% - 36px);padding:14px 18px;background:var(--green);color:white;border-radius:12px;box-shadow:0 4px 25px #153c3533;font-size:.8rem}.update-banner .button{white-space:nowrap}
 @media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+
+/* User palettes: semantic warnings and errors retain their own colors. */
+:root[data-appearance]{color:var(--theme-text);background:var(--theme-canvas);color-scheme:light}
+[data-appearance] .sidebar,[data-appearance] .topbar{background:var(--theme-chrome)}
+[data-appearance] .sidebar-footer strong,[data-appearance] .topbar,
+[data-appearance] .nav-link,[data-appearance] .eyebrow,
+[data-appearance] .metric-label,[data-appearance] .metric-detail,
+[data-appearance] .subject-code,[data-appearance] .footnote,
+[data-appearance] .activity-source,[data-appearance] .activity-columns,
+[data-appearance] .card-bottom{color:var(--muted)}
+[data-appearance] :focus-visible{outline-color:var(--theme-focus)}
+[data-appearance] .primary,[data-appearance] .brand-mark,
+[data-appearance] .semester-hero,[data-appearance] .update-banner{background:var(--green);color:var(--theme-on-primary)}
+[data-appearance] .primary:hover{background:var(--theme-primary-hover)}
+[data-appearance] .secondary{color:var(--theme-text);border-color:var(--line)}
+[data-appearance] .secondary:hover,[data-appearance] .ghost:hover,
+[data-appearance] .nav-link:hover{background:var(--theme-soft)}
+[data-appearance] .nav-link.active{background:var(--theme-accent-soft);color:var(--theme-on-accent-soft)}
+[data-appearance] .semester-hero .eyebrow,[data-appearance] .semester-hero p,
+[data-appearance] .semester-hero .muted{color:var(--theme-on-primary-soft)}
+[data-appearance] .semester-hero .meter{accent-color:var(--theme-on-primary);background:var(--theme-hero-line)}
+[data-appearance] .semester-hero .meter::-webkit-progress-bar{background:var(--theme-hero-line)}
+[data-appearance] .semester-hero .meter::-webkit-progress-value{background:var(--theme-on-primary)}
+[data-appearance] .semester-hero .meter::-moz-progress-bar{background:var(--theme-on-primary)}
+[data-appearance] .art-orbit,[data-appearance] .art-orbit:before{border-color:var(--theme-hero-line)}
+[data-appearance] .art-book{background:var(--lime);color:var(--theme-on-accent);box-shadow:9px 9px 0 var(--theme-hero-line)}
+[data-appearance] .art-spark{color:var(--theme-on-primary)}
+[data-appearance] .subject-card:hover{border-color:var(--theme-meter);box-shadow:0 6px 18px #0000000a}
+[data-appearance] .credits,[data-appearance] .pill,
+[data-appearance] .progress-number{background:var(--theme-soft);color:var(--theme-text);border-color:var(--line)}
+[data-appearance] .pill.done{background:var(--theme-accent-soft);color:var(--theme-on-accent-soft)}
+[data-appearance] .meter{accent-color:var(--theme-meter);background:var(--theme-soft)}
+[data-appearance] .meter::-webkit-progress-bar{background:var(--theme-soft)}
+[data-appearance] .meter::-webkit-progress-value{background:var(--theme-meter)}
+[data-appearance] .meter::-moz-progress-bar{background:var(--theme-meter)}
+[data-appearance] .card-bottom,[data-appearance] .activity-row,[data-appearance] .weight-row{border-color:var(--line)}
+[data-appearance] .card-bottom strong,[data-appearance] .card-open,[data-appearance] .back-link{color:var(--theme-text)}
+[data-appearance] .number-input:not([aria-invalid=true]){background:var(--theme-chrome);color:var(--theme-text);border-color:var(--line)}
+[data-appearance] .number-input::placeholder{color:var(--muted)}
+[data-appearance] .number-input:hover,[data-appearance] .number-input:focus{border-color:var(--theme-focus)}
+[data-appearance] .simulation:not(.impossible){background:var(--theme-accent-soft);color:var(--theme-on-accent-soft);border-color:var(--line)}
+[data-appearance] .simulation:not(.impossible) .eyebrow,
+[data-appearance] .simulation:not(.impossible) .simulation-figure span{color:var(--theme-on-accent-soft)}
+[data-appearance] .simulation:not(.impossible) .simulation-figure{border-color:var(--line)}
+[data-appearance] .activity-columns,[data-appearance] .progress-footer{background:var(--theme-chrome)}
+[data-appearance] .notice:not(.error){background:var(--theme-accent-soft);color:var(--theme-on-accent-soft)}
+[data-appearance] .weight-total:not(.invalid-total){color:var(--theme-text)}
+.appearance-presets{display:flex;flex-wrap:wrap;gap:10px;margin:20px 0}
+.palette-button{gap:10px;min-height:46px}
+.palette-button[aria-pressed=true]{outline:2px solid var(--theme-focus);outline-offset:2px}
+.palette-swatches{display:flex;gap:3px}
+.palette-swatch{width:16px;height:16px;border:1px solid #00000033;border-radius:50%}
+.appearance-controls{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin:24px 0}
+.appearance-control{display:grid;grid-template-columns:52px 1fr;gap:8px 12px;border:1px solid var(--line);border-radius:10px;padding:18px;cursor:pointer}
+.appearance-control>strong,.appearance-control>.muted{grid-column:1/-1;line-height:1.6}
+.color-input{width:52px;height:44px;padding:3px;border:1px solid var(--line);border-radius:7px;background:white;cursor:pointer}
+.color-code{align-self:center;font-variant-numeric:tabular-nums;font-size:.85rem}
+.appearance-status{margin:18px 0 12px;min-height:1.6em}
+@media(max-width:600px){.appearance-controls{grid-template-columns:1fr}.appearance-presets>.button{flex:1 1 140px}}

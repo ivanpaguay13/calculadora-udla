@@ -1,0 +1,30 @@
+plugins { id 'com.android.application' }
+
+android {
+    namespace 'io.github.ivanpaguay13.misnotas'
+    compileSdk 35
+    defaultConfig {
+        applicationId 'io.github.ivanpaguay13.misnotas'
+        minSdk 26
+        targetSdk 35
+        versionCode 1
+        versionName '0.1.0'
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+    sourceSets.main.assets.srcDir layout.buildDirectory.dir('generated/webAssets')
+}
+
+dependencies { implementation 'androidx.webkit:webkit:1.12.1' }
+
+// Build the web app explicitly with npm run android:prepare before invoking Gradle.
+tasks.register('verifyWebAssets') {
+    doLast {
+        if (!layout.buildDirectory.file('generated/webAssets/web/grades.wasm').get().asFile.exists()) {
+            throw new GradleException('Ejecuta npm run android:prepare desde la raíz del proyecto.')
+        }
+    }
+}
+tasks.named('preBuild').configure { dependsOn 'verifyWebAssets' }

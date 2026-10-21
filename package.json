@@ -11,10 +11,12 @@
   "scripts": {
     "check": "tsc --noEmit",
     "build": "node scripts/build.mjs",
+    "android:prepare": "npm run build && node scripts/prepare-android.mjs",
+    "test:android": "node tests/android.test.mjs",
     "dev": "npm run build && node scripts/serve.mjs",
     "preview": "node scripts/serve.mjs",
     "test": "cargo test --locked && npm run test:web",
-    "test:web": "tsc && node tests/storage.test.mjs && node tests/decimal-input.test.mjs",
+    "test:web": "tsc && node tests/storage.test.mjs && node tests/decimal-input.test.mjs && node tests/appearance.test.mjs",
     "test:wasm": "node tests/wasm.test.mjs"
   },
   "devDependencies": { "typescript": "5.9.2" }

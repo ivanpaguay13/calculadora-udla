@@ -47,6 +47,85 @@ abrirla desde allí.
 - Ponderaciones personalizadas locales, siempre con 100 % por progreso.
 - Diseño adaptable, etiquetas accesibles, teclado y campos numéricos.
 - Caché sin conexión y manifiesto PWA. La instalación depende del navegador.
+- Colores personalizables: cuatro paletas, color principal y acento propios.
+
+En **Respaldos y ajustes → Colores de la aplicación** puedes elegir verde,
+azul, lavanda o terracota, o seleccionar tus propios colores. Los cambios se
+ven al instante y se conservan al volver a abrir la aplicación. El texto se
+ajusta al fondo para mantenerlo legible; puedes restaurar los colores originales
+con un botón. La opción funciona en Android y en la web.
+
+La apariencia se guarda por dispositivo, separada de las notas, y no se incluye
+en los respaldos JSON. Cambiar colores o restaurarlos conserva las calificaciones.
+
+## Aplicación Android (APK personal)
+
+El proyecto incluye una app Android en `android/` que empaqueta la misma
+interfaz, el catálogo y el motor Rust/WebAssembly. Los recursos se cargan
+localmente con [WebViewAssetLoader](https://developer.android.com/develop/ui/views/layout/webapps/load-local-content):
+funciona sin conexión desde el primer inicio, sin servidor ni cuenta.
+Requiere Android 8 o posterior y **Android System WebView actualizado**.
+
+Las notas se guardan dentro de la app, separadas de las del navegador.
+Para trasladarlas, exporta un respaldo JSON desde la web e impórtalo en
+**Respaldos y ajustes** de la app. La exportación Android abre el selector del
+sistema para elegir dónde guardar el JSON. No requiere permisos generales
+de almacenamiento. Desinstalar la app o borrar sus datos elimina las notas;
+exporta antes un respaldo.
+
+### Obtener el APK desde GitHub
+
+Después de subir estos archivos al repositorio:
+
+1. Abre **Actions → Generar APK personal → Run workflow**, o sube un cambio a `main`.
+2. Espera a que terminen las pruebas y la compilación.
+3. Descarga **mis-notas-apk-debug** en **Artifacts** de esa ejecución
+   (necesitas iniciar sesión en GitHub; el archivo se conserva 30 días).
+4. Descomprime el ZIP, lleva `app-debug.apk` a tu teléfono y ábrelo.
+   Android te pedirá permitir instalaciones desde la aplicación que lo abre.
+
+Es un APK de depuración para uso personal. El flujo no publica una Release
+ni lo distribuye en Google Play. Tampoco incluye notas personales.
+
+**Firma para futuras actualizaciones:** Android exige la misma firma para
+actualizar una app conservando sus datos. Sin configuración adicional, cada
+ejecución de GitHub genera una clave de depuración distinta y el APK siguiente
+puede requerir desinstalar el anterior. Para evitarlo, crea una clave local
+una sola vez, usando un archivo que todavía no exista:
+
+```sh
+keytool -genkeypair -keystore mis-notas-debug.keystore -storepass android \
+  -alias androiddebugkey -keypass android -keyalg RSA -keysize 2048 \
+  -validity 10000 -dname "CN=Android Debug,O=Android,C=US"
+base64 -w 0 mis-notas-debug.keystore
+```
+
+Guarda la salida Base64 como secreto **ANDROID_DEBUG_KEYSTORE_BASE64** en
+**Settings → Secrets and variables → Actions** antes de generar el primer APK
+que vayas a utilizar. Conserva una copia privada de la clave; los archivos
+`*.keystore` y `*.jks` están excluidos de Git. Esta firma sigue siendo de
+depuración y se usa únicamente para esta distribución personal.
+
+### Compilar Android en tu equipo
+
+Además de Rust, el objetivo WASM y Node.js, instala **JDK 17**, **Gradle 8.11.1**
+y el SDK de Android con plataforma 35 y Build Tools 35.0.0. Configura
+`ANDROID_HOME` o `android/local.properties` con la ruta del SDK.
+
+```sh
+npm ci
+npm run android:prepare
+npm run test:android
+gradle -p android assembleDebug lintDebug
+```
+
+El APK queda en `android/app/build/outputs/apk/debug/app-debug.apk`.
+Ejecuta de nuevo `npm run android:prepare` después de cambiar la web o de
+limpiar la compilación Android. Los recursos generados no se versionan.
+Antes de confiar tus notas a la app, comprueba en tu teléfono que una nota
+persiste al cerrar y abrir, que inicia en modo avión y que puedes exportar e
+importar un respaldo. La preparación de recursos y el puente de exportación
+tienen pruebas automatizadas; estas no sustituyen la comprobación en Android.
 
 La meta inicial `7.00` es personal y editable: no confirma el umbral institucional.
 Un resultado incompleto nunca se presenta como definitivo. El promedio de lo

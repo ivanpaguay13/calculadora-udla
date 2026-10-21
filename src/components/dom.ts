@@ -21,6 +21,11 @@ export function meter(evaluated: number, total: number, label: string): HTMLElem
   group.append(progress, el('span', 'muted', `${evaluated} de ${total} actividades registradas`)); return group;
 }
 export function download(text: string, name: string): void {
+  const native = (window as Window & { AndroidBackup?: { postMessage(message: string): void } }).AndroidBackup;
+  if (native) {
+    native.postMessage(JSON.stringify({ text, name }));
+    return;
+  }
   const url = URL.createObjectURL(new Blob([text], { type: 'application/json' }));
   const a = el('a'); a.href = url; a.download = name; a.click();
   setTimeout(() => URL.revokeObjectURL(url), 1000);

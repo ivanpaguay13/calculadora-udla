@@ -1,12 +1,18 @@
 import { loadEngine } from './grades/engine.js';
 import { parseDecimalInput } from './grades/input.js';
 import { bindDecimalField } from './components/decimal-field.js';
+import { appearancePanel } from './components/appearance-panel.js';
+import { applyAppearance, DEFAULT_APPEARANCE, loadAppearance } from './appearance.js';
+import type { Appearance } from './appearance.js';
 import { button, download, el, meter, metric, numericInput } from './components/dom.js';
 import { commit, exportBackup, initialState, MAX_BACKUP_BYTES, parseBackup, restore, STORAGE_KEY } from './storage/state.js';
 import { gradeKey, PROGRESSES } from './types.js';
 import type { Catalog, Evaluate, Progress, Report, State, Subject, SubjectReport } from './types.js';
 
 const root = document.querySelector<HTMLElement>('#app')!;
+let appearance: Appearance = { ...DEFAULT_APPEARANCE };
+try { appearance = loadAppearance(window.localStorage); } catch { /* Preview remains available without storage. */ }
+applyAppearance(appearance);
 let catalog: Catalog, evaluate: Evaluate, state: State, report: Report;
 let storage: Storage | null = null;
 let liveUpdates: (() => void)[] = [];
@@ -79,7 +85,7 @@ function title(main: HTMLElement, eyebrow: string, heading: string, description:
 function backupButton(): HTMLButtonElement {
   return button('↓ Exportar respaldo', () => {
     download(exportBackup(state), `mis-notas-${catalog.periodo}-${new Date().toISOString().slice(0, 10)}.json`);
-    announce('Respaldo descargado. Guárdalo para recuperar o trasladar tus notas.');
+    announce('Respaldo preparado. Confirma el guardado si tu dispositivo lo solicita.');
   }, 'button secondary');
 }
 function summaryStats(s: Report['semester'], semester = false): HTMLElement[] {
@@ -260,6 +266,7 @@ function importFile(file: File): void {
 }
 function settings(main: HTMLElement): void {
   title(main, 'TUS DATOS, CONTIGO', 'Respaldos y ajustes', 'Conserva una copia de tus notas o llévalas a otro dispositivo.');
+  main.append(appearancePanel(appearance, value => { appearance = value; }));
   const panel = el('section', 'settings-panel'); panel.append(el('h2', '', 'Copia de seguridad'), el('p', '', 'Las notas se guardan en este navegador. No se sincronizan entre dispositivos y pueden perderse si borras los datos del sitio.'));
   const actions = el('div', 'dialog-actions'); const file = el('input'); file.type = 'file'; file.accept = '.json,application/json'; file.hidden = true;
   file.addEventListener('change', () => { if (file.files?.[0]) importFile(file.files[0]); file.value = ''; });
